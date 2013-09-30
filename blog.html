@@ -95,7 +95,7 @@ function bubble() {
   }
   for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
   setTimeout("bubble()", 40);
-}document.write(unescape("%3Cbr%20/%3E%3Ca%20href%3D%22http%3A//htmltips.tumblr.com/%22%20target%3D%22_blank%22%3E%3Cimg%20style%3D%22z-index%3A%20100%3B%20position%3A%20absolute%3B%20left%3A%2010px%3B%20top%3A%2010px%3B%22%20src%3D%22http%3A//static.tumblr.com/o86puxv/sBGlq2gfm/button.gif%22%20border%3D%220%22%20title%3D%22Tutorials%20and%20tumblr%21%20@%20htmltips.tumblr.com%22%3E%3C/a%3E%3Cbr%20/%3E"));function update_bubb(i) {
+};function update_bubb(i) {
   if (bubby[i]) {
     bubby[i]-=bubbs[i]/2+i%2;
     bubbx[i]+=(i%5-2)/5;
