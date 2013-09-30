@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<head>
+<meta name="description" content="Basic Portfolio">
+<meta name="author" content="name goes here">
+<meta charset="UTF-8">
+<title>My Blog | Welcome</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>document.write(unescape("%3Cstyle%20type%3D%22text%2Fcss%22%3Ebody%7Bbackground-image%3Aurl(%22http%3A//i.imgur.com/wzL6uql.jpg%22)%3Bbackground-position%3Acenter%3Bbackground-repeat%3Ano-repeat%3Bbackground-attachment%3Afixed%3B%7D%3C%2Fstyle%3E%3Cscript%20type%3D%22text%2Fjavascript%22%3Evar%20hbb_div%20%3D%20document.createElement(%22div%22)%3Bhbb_div.innerHTML%20%3D%20%22%3Ca%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22http%3A%2F%2Fhotbliggityblog.com%2Fbackgrounds%2Frefer%2F560%5C%22%3E%3Cimg%20style%3D%5C%22border%3Anone%3B%5C%22%20src%3D%5C%22http%3A%2F%3A0px%3Bborder%3A0px%3Bz-index%3A50%3B%22%3B%3C%2Fscript%3E"));</script>
+
+<style type="text/css">body, a:hover {cursor: url(http://cur.cursors-4u.net/nature/nat-9/nat849.ani), url(http://cur.cursors-4u.net/nature/nat-9/nat849.png), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2010/04/20/cute-spinning-flower-blue.html" target="_blank" title="Cute Spinning Flower Blue"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Spinning Flower Blue" style="position:absolute; top: 0px; right: 0px;" /></a>
+
+<script type="text/javascript">
+// <![CDATA[
+var colours=new Array("#0B2161", "#0B0B3B", "#0B0B3B", "#0B2161", "#0B2161"); // colours for top, right, bottom and left borders and background of bubbles
+var bubbles=66; // maximum number of bubbles on screen
+
+/****************************
+* JavaScript Bubble Cursor  *
+* (c) 2010 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var bubb=new Array();
+var bubbx=new Array();
+var bubby=new Array();
+var bubbs=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var rats, div;
+  for (var i=0; i<bubbles; i++) {
+    rats=createDiv("3px", "3px");
+	rats.style.visibility="hidden";
+
+	div=createDiv("auto", "auto");
+    rats.appendChild(div);
+	div=div.style;
+    div.top="1px";
+    div.left="0px";
+	div.bottom="1px";
+	div.right="0px";
+	div.borderLeft="1px solid "+colours[3];
+	div.borderRight="1px solid "+colours[1];
+
+    div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+    div.top="0px";
+    div.left="1px";
+	div.right="1px";
+	div.bottom="0px"
+	div.borderTop="1px solid "+colours[0];
+	div.borderBottom="1px solid "+colours[2];
+
+	div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+	div.left="1px";
+	div.right="1px";
+    div.bottom="1px";
+	div.top="1px";
+	div.backgroundColor=colours[4];
+	div.opacity=0.5;
+	if (document.all) div.filter="alpha(opacity=50)";
+
+    document.body.appendChild(rats);
+	bubb[i]=rats.style;
+  }
+  set_scroll();
+  set_width();
+  bubble();
+}}
+
+function bubble() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<bubbles; c++) if (!bubby[c]) {
+      bubb[c].left=(bubbx[c]=x)+"px";
+      bubb[c].top=(bubby[c]=y)+"px";
+      bubb[c].width="3px";
+	  bubb[c].height="3px"
+	  bubb[c].visibility="visible";
+	  bubbs[c]=3;
+      break;
+	}
+  }
+  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
+  setTimeout("bubble()", 40);
+}document.write(unescape("%3Cbr%20/%3E%3Ca%20href%3D%22http%3A//htmltips.tumblr.com/%22%20target%3D%22_blank%22%3E%3Cimg%20style%3D%22z-index%3A%20100%3B%20position%3A%20absolute%3B%20left%3A%2010px%3B%20top%3A%2010px%3B%22%20src%3D%22http%3A//static.tumblr.com/o86puxv/sBGlq2gfm/button.gif%22%20border%3D%220%22%20title%3D%22Tutorials%20and%20tumblr%21%20@%20htmltips.tumblr.com%22%3E%3C/a%3E%3Cbr%20/%3E"));function update_bubb(i) {
+  if (bubby[i]) {
+    bubby[i]-=bubbs[i]/2+i%2;
+    bubbx[i]+=(i%5-2)/5;
+    if (bubby[i]>sdown && bubbx[i]>0) {
+	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
+		bubb[i].width=bubbs[i]+"px";
+		bubb[i].height=bubbs[i]+"px";
+	  }
+      bubb[i].top=bubby[i]+"px";
+      bubb[i].left=bubbx[i]+"px";
+    }
+    else {
+      bubb[i].visibility="hidden";
+      bubby[i]=0;
+      return;
+    }
+  }
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sleft;
+  x=(e)?e.pageX:event.x+sdown; }
+
+window.onresize=set_width;
+function set_width() {
+  if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (typeof(self.innerHeight)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+  else {
+    swide=800;
+	shigh=600;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height;
+  div.style.width=width;
+  div.style.overflow="hidden";
+  return (div);
+}
+// ]]>
+</script>
+
+
+
+	<header>
+		<h1 style="color:#1C1C1C; font-family:Lucida"><strong><em>Welcome to My Blog</em></strong></h1>
+		<ul id="nav">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="lived.html">Lived <br />Experiences</a></li>
+			<li><a href="cultural.html">Cultural <br />Analysis</a></li>
+			<li><a href="formal.html">Formal <br />Research</a></li>
+			<li><a href="remix.html">Remix</a></li>
+			<li><a href="course.html">Course <br />Retrospective</a></li>
+			<li><a href="blog.html">Blog</a></li>
+		</ul>
+	</header>
+	<main>
+		
+		<h1 style="color:#1C1C1C; font-size:40px; font-family:Lucida; text-align:center"><strong><em>Writing: Science and Technology</em></strong></h1>
+		
+		<div align="center" class='tabber'>
+<b:section class='tabbertab' id='tab1' maxwidgets='1'><a href="activity1.html">In-Class <br />Activiy 1</a></b:section>
+<b:section class='tabbertab' id='tab2' maxwidgets='1'><a href="activity2.html">In-Class <br />Activiy 2</a></b:section>
+<b:section class='tabbertab' id='tab3' maxwidgets='1'><a href="activity3.html">In-Class <br />Activiy 3</a></b:section>
+<b:section class='tabbertab' id='tab4' maxwidgets='1'><a href="activity4.html">In-Class <br />Activiy 4</a></b:section>
+</div>
+		
+		    <h3 style="color:#0B173B; font-size:25px; font-family:Lucida">Video Review | Televangelist Oral Roberts' Gay Grandson Says "It Gets Better"</h3>
+		   <div align="center"><iframe width="480" height="360" src="//www.youtube.com/embed/KYa0wi4XzeI?rel=0" frameborder="0" allowfullscreen></iframe></div>
+			        <p style="color:#1C1C1C; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">For today's WRA 110 section 746 class, we had a video-watching session. The purpose of this session is to help the students to understand more about narrative writing since most of us wrote essay writing instead on narrative writing for the Lived Experience Project. As a result, Dr. Christie L. Daniels has asked us to write a review on the video she has showed us today.</p>
+		        <h5 style="color:#0B173B; font-size:20px; font-family:calibri"><em>What is the purpose of the video?</em></h5>	        
+			        <p style="color:#1C1C1C; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The purpose of the video can be explained in two different perspectives because generally the viewer of the video can be classified into two groups. First is the homosexual community. The purpose of this video is to give moral supports and courage to the homosexuals out there so that they aren't afraid to fight for their rights as individuals who are free to love anyone they want, to be proud of themselves for who they are, and to encourage them to keep holding on although they are rejected by the public which includes their families and not give up on life regardless of what they're facing because IT GETS BETTER for them.</p>
+			        <p style="color:#1C1C1C; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">Second group of the viewer is the non-homosexual community. For those who aren't homosexual, this video will help them understand more on the hardship that the homosexuals faced in the society and opens the viewer's mind by questioning whether the treatments that the homosexuals received from the public especially from the televangelist,  are considered fair. The video are trying to make the public understand that it is not wrong to be homosexuals, especially from the religious approach because everyone has the right to love anyone that makes them happy, regardless of their sexes. This video acts like a door to the homosexual world for the non-homosexual community, and allows them to see that the homosexuals are no different than them, JUST A HUMAN WHO TRIES TO LOVE THE PERSON THEY LOVE. Through this video, the presenter hopes to persuade others to change their view on homosexuality and thus, gain tolerance and support in a wider community.</p>
+			    <h5 style="color:#0B173B; font-size:20px; font-family:calibri"><em>How the Video Attempts Achieve Its Purpose?</em></h5>
+			        <p style="color:#1C1C1C; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The video attempts to achieve its purpose by sharing the presenter's personal experience which then arouses the emotions and sympathies in the viewer. It is very spirit lifting for the homosexuals and at the same time very touching to the non-homosexuals. The sentences structure and the word choice also play important role in helping the video to achieve its purpose. The sentences are usually rhetorical questions and have strong emotions to them. They are usually very dramatic and the word choices are very emotionally charged. The intonation of the presenter sounds pleading and strong at the same time. All of them combine to grasp the heart of the viewer and manipulatively luring them into the accepting the personal belief of the presenter. The blackboard scribbling and the music combined perfectly with the story telling and these really affect the emotion the viewers have while watching the video. </p>
+			    <h5 style="color:#0B173B; font-size:20px; font-family:calibri"><em>What is the structure of the message?</em></h5>
+			        <p style="color:#1C1C1C; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The messages are structured in a way that it evokes the emotion of the viewer.  In another words, pathos are evoked in the argument. The presenter chooses the words wisely; each word is chosen with specific purpose which is to cultivate certain emotion in the viewer. Euphemism, periphrasis and descriptive words are used throughout the video to ensure effective delivery of messages suitable to the purpose of the video.</p>
+			    <h5 style="color:#0B173B; font-size:20px; font-family:calibri"><em>How this video's structure can help me revise my Lived Experiences project?</em></h5>         
+			        <p style="color:#1C1C1C; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The structure of the video, especially the way the presenter delivers his message to the viewer is very effective. It seems like the video is very personal to him. When watching the video, it feels like you are really close to him; as if like he is talking to you personally, telling the story of his life and sharing the problem he has to you. Now, I have realized that my Lived Experiences project does not seem too personal to me, especially when I explain about the technology. I should write my essay as if like I am telling a story to my best friend. It should be filled with my passion and enthusiasm instead of just monotonous essay with overload of information. Now I have a guideline to write my narrative essay on Lived Experiences project.</p>
+	</main>
+	<footer>
+		<p style="color:#1C1C1C; text-align:center; font-size:20px; font-family:lucida">Copyright &copy; 2013 Fatin Huraiyah Pathi | Michigan State University</p>
+	</footer>

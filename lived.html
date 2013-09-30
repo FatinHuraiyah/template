@@ -3,27 +3,225 @@
 <meta name="description" content="Basic Portfolio">
 <meta name="author" content="name goes here">
 <meta charset="UTF-8">
-<title>lived experiences project | my portfolio</title>
+<title>Lived Experiences Project</title>
 <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<script>document.write(unescape("%3Cstyle%20type%3D%22text%2Fcss%22%3Ebody%7Bbackground-image%3Aurl(%22http%3A//i.imgur.com/BfrvrhU.jpg%22)%3Bbackground-position%3Acenter%3Bbackground-repeat%3Ano-repeat%3Bbackground-attachment%3Afixed%3B%7D%3C%2Fstyle%3E%3Cscript%20type%3D%22text%2Fjavascript%22%3Evar%20hbb_div%20%3D%20document.createElement(%22div%22)%3Bhbb_div.innerHTML%20%3D%20%22%3Ca%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22http%3A%2F%2Fhotbliggityblog.com%2Fbackgrounds%2Frefer%2F528%5C%22%3E%3Cimg%20style%3D%5C%22border%3Anone%3B%5C%22%20src%3D%5C%22http%3A%2F%3Bz-index%3A50%3B%22%3B%3C%2Fscript%3E"));</script>
+
+<style type="text/css">body, a:hover {cursor: url(http://cur.cursors-4u.net/nature/nat-9/nat854.ani), url(http://cur.cursors-4u.net/nature/nat-9/nat854.png), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2010/04/20/cute-spinning-flower-tan.html" target="_blank" title="Cute Spinning Flower Tan"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Spinning Flower Tan" style="position:absolute; top: 0px; right: 0px;" /></a>
+
+<script type="text/javascript">
+// <![CDATA[
+var colours=new Array("#FF8000", "#DF3A01", "#DF3A01", "#FF8000", "#FF8000"); // colours for top, right, bottom and left borders and background of bubbles
+var bubbles=66; // maximum number of bubbles on screen
+
+/****************************
+* JavaScript Bubble Cursor  *
+* (c) 2010 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var bubb=new Array();
+var bubbx=new Array();
+var bubby=new Array();
+var bubbs=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var rats, div;
+  for (var i=0; i<bubbles; i++) {
+    rats=createDiv("3px", "3px");
+	rats.style.visibility="hidden";
+
+	div=createDiv("auto", "auto");
+    rats.appendChild(div);
+	div=div.style;
+    div.top="1px";
+    div.left="0px";
+	div.bottom="1px";
+	div.right="0px";
+	div.borderLeft="1px solid "+colours[3];
+	div.borderRight="1px solid "+colours[1];
+
+    div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+    div.top="0px";
+    div.left="1px";
+	div.right="1px";
+	div.bottom="0px"
+	div.borderTop="1px solid "+colours[0];
+	div.borderBottom="1px solid "+colours[2];
+
+	div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+	div.left="1px";
+	div.right="1px";
+    div.bottom="1px";
+	div.top="1px";
+	div.backgroundColor=colours[4];
+	div.opacity=0.5;
+	if (document.all) div.filter="alpha(opacity=50)";
+
+    document.body.appendChild(rats);
+	bubb[i]=rats.style;
+  }
+  set_scroll();
+  set_width();
+  bubble();
+}}
+
+function bubble() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<bubbles; c++) if (!bubby[c]) {
+      bubb[c].left=(bubbx[c]=x)+"px";
+      bubb[c].top=(bubby[c]=y)+"px";
+      bubb[c].width="3px";
+	  bubb[c].height="3px"
+	  bubb[c].visibility="visible";
+	  bubbs[c]=3;
+      break;
+	}
+  }
+  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
+  setTimeout("bubble()", 40);
+<<<<<<< HEAD
+}document.write(unescape("%3Cbr%20/%3E%3Ca%20href%3D%22http%3A//htmltips.tumblr.com/%22%20target%3D%22_blank%22%3E%3Cimg%20style%3D%22z-index%3A%20100%3B%20position%3A%20absolute%3B%20left%3A%2010px%3B%20top%3A%2010px%3B%22%20src%3D%22http%3A//static.tumblr.com/o86puxv/sBGlq2gfm/button.gif%22%20border%3D%220%22%20title%3D%22Tutorials%20and%20tumblr%21%20@%20htmltips.tumblr.com%22%3E%3C/a%3E%3Cbr%20/%3E"));function update_bubb(i) {
+=======
+}function update_bubb(i) {
+>>>>>>> Fixed the sponsored link problem
+  if (bubby[i]) {
+    bubby[i]-=bubbs[i]/2+i%2;
+    bubbx[i]+=(i%5-2)/5;
+    if (bubby[i]>sdown && bubbx[i]>0) {
+	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
+		bubb[i].width=bubbs[i]+"px";
+		bubb[i].height=bubbs[i]+"px";
+	  }
+      bubb[i].top=bubby[i]+"px";
+      bubb[i].left=bubbx[i]+"px";
+    }
+    else {
+      bubb[i].visibility="hidden";
+      bubby[i]=0;
+      return;
+    }
+  }
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sleft;
+  x=(e)?e.pageX:event.x+sdown; }
+
+window.onresize=set_width;
+function set_width() {
+  if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (typeof(self.innerHeight)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+  else {
+    swide=800;
+	shigh=600;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height;
+  div.style.width=width;
+  div.style.overflow="hidden";
+  return (div);
+}
+// ]]>
+</script>
+
 	<header>
-		<h1>my portfolio</h1>
+		<h1 style="color:#2E2E2E; font-family:Lucida"><strong><em>Lived Experiences Project</em></strong></h1>
 		<ul id="nav">
-			<li><a href="index.html">home</a></li>
-			<li><a href="lived.html">lived <br />experiences</a></li>
-			<li><a href="#">cultural <br />analysis</a></li>
-			<li><a href="#">formal <br />research</a></li>
-			<li><a href="#">remix</a></li>
-			<li><a href="#">course <br />retrospective</a></li>
-			<li><a href="blog.html">blog</a></li>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="lived.html">Lived <br />Experiences</a></li>
+			<li><a href="cultural.html">Cultural <br />Analysis</a></li>
+			<li><a href="formal.html">Formal <br />Research</a></li>
+			<li><a href="remix.html">Remix</a></li>
+			<li><a href="course.html">Course <br />Retrospective</a></li>
+			<li><a href="blog.html">Blog</a></li>
 		</ul>
 	</header>
 	<main>
-		<h1>lived experiences project title</h1>
-		<p>content goes here</p>
-		<p>paragraph 2</p>
+		<div style="text-align:center"><img src="http://i394.photobucket.com/albums/pp23/lifeandponderings/buttercupdaisiesbannercopy-1.png"/></div>
+		<h1 style="color:#2E2E2E; font-size:40px; font-family:Lucida; text-align:center"><strong><em>My Life Through 'Food'</em></strong></h1>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">Who I was Before I knew 'Food'</h3>
+			    <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">I was never the type of girl who loves to dream big or think about my future and plan ahead for my future goal. Partly because <em><strong>I was scared of the probability</em></strong> that I might not achieved what I have wished for and disappoint people around me or maybe I am just <em><strong>afraid of the risk</em></strong>. Most of the time, I am the type of girl who actually prefers to go with the flow and accept whatever her life offers and make the full use of it while enjoying it to the fullest as her day goes by. Naturally, when you are still a kid, it just seems so normal for the adults to ask you what you want to do when you grow up. I was never sure of what I want for myself, so I did what most kids usually do when they are at my age, saying all those fancy ambitions ranging from being a super heroine to professional careers like doctor and scientist.  It was not until I finished my high school that I figured where my passion is and what I wanted to venture in for my future.</p>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">After I meet 'Food' and Where He Leads Me</h3>
+			    <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">I have discovered that<strong><em> I LOVE FOOD and I want to be a CHEMICAL ENGINEER!</em></strong> It was the people around me, the stuff that I have learnt from classes and the foods displayed on that huge shelves in stores that inspire me to be a chemical engineer. My family and friends made me realized how in love I am with foods and how conscious am I about the quality of the food that I eat. The classes that I took in high school drew a pathway that opens my mind and world to see a bigger picture on how technologies have improved tremendously over the century to help mankind sustain their food demand and supply. Consequently, the processed and canned foods that I see on the store shelves make me wonder who are responsible for these brilliant technologies and how did they figured it out, the technology advancement that gives us the privilege to choose from so many options of flavors at varying prices, to increase the shelf life of food, to allow people with allergy eat their favorite food, to reduce our dependency on natural resources that is getting more scarce and most importantly to yield bigger amount and better quality of agriculture products. Yes, chemical engineers are the people who are responsible for the amazing improvements and I want to take part in all of that and <em><strong>make a change in this world!</em></strong></p>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">What Part of 'Food' Makes Me Love Him?</h3>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">Among all the technologies invented by the chemical engineer, there is one that sparks my interest the most and that must be the <strong><em>advanced packaging</em></strong>, which is the enhancement of the traditional vacuum packaging. Before we learn about the advance packaging, we should first understand the basic, what is vacuum packaging? <strong><em>Do you know</strong></em> why most of the junk foods in the mart are packed in a vacuum pack? Do you know why vacuum packaging is called vacuum and not air-tight packaging? Let me give you the answer for all that questions, vacuum packaging allows the food to last longer by removing the air, which allows the microbes to live and cause the food to be spoiled, inside the food package. Vacuum packaging is different than air-tight because there is not even air existing in the packaging. So, now that you know the basic, can you guess what advance packaging is? Advanced packaging uses this concept but instead off pumping out the air in the package; it modifies the air composition in the package in a way that allows fresh produce to last longer by slowing the ripening process and decaying without changing the original taste of the fresh produce. It is way better than the traditional vacuum packaging as the food actually last longer and the texture and color of the food is kept constant. <em><strong>Food appearance does matter</em></strong> a lot to me. In the next paragraph I will talk about some examples of advanced food packaging.</p>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">Getting to Know 'Food' Better</h3>
+		        <p style="color:#2E2E2E; text-align:justify; text-indent:5em; font-size:20px; font-family:calibri">So now, let me share with you more about what is the difference in the various type of food packaging that you see on the shelves in marts. Although Controlled-atmosphere packaging (CAP), modified-atmosphere packaging (MAP) and invention of chemically sterilized brick packs may sound unfamiliar to you but they are the common food packaging that are <em><strong>compulsory to every household</em></strong>. </p> 
+		            <ol style="color:#424242">
+		                <li><p style="color:#424242; font-size:20px;font-family:calibri"><strong>Controlled-atmosphere Packaging (CAP):</strong></p>
+		                    <ul>
+		                        <li style="Color:#2E2E2E; text-align:justify; font-size:18px;font-family:calibri">CAP <strong><em>controls</em></strong> the oxygen and carbon dioxide levels inside the food packaging</li>
+		                        <li style="Color:#2E2E2E; text-align:justify; font-size:18px;font-family:calibri">Slow the ripening and prevents spoilage of fresh produce.</li>
+		                    </ul>
+		                </li>
+		                <li><p style="color:#424242; font-size:20px;font-family:calibri"><strong>Modified-atmosphere Packaging (MAP):</strong></p>
+		                    <ul>
+		                        <li style="Color:#2E2E2E; text-align:justify; font-size:18px;font-family:calibri">MAP pumps a customized blend of inert gases into the food packaging to <em><strong>replace</em></strong> the air that is already inside the food packaging.</li>
+		                        <li style="Color:#2E2E2E; text-align:justify; font-size:18px;font-family:calibri">Slow the ripening and prevents spoilage of fresh produce.</li>
+		                    </ul>
+		                </li>
+		                <li><p style="color:#424242; font-size:20px;font-family:calibri"><strong>Chemically Sterilized Brick Packs:</strong></p>
+		                    <p style="Color:#2E2E2E; text-align:justify; text-indent:3.5em; font-size:18px;font-family:calibri">Do you know why we can keep fresh milk, fruit juices, tomato sauce and other countless products unrefrigerated when they are still unopened? That is what sterilized brick packs do, it consists of multilayer packages that prevents fresh produce like milk and juices from spoilage and extends their shelf life without the need of refrigeration. How superb is that? <em><strong>Imagine world without that technology!</em></strong> The mall will be filled with many refrigerators and chillers as most of the foods cannot be displayed on shelves instead they must be refrigerated to keep it fresh for the consumer. So what exactly does the multilayer refers to? The multilayers are made up from different material and each material plays a different role. The first exterior layer which is a protective coating keeps the package dry, the second layer which is the paper layer gives the packages the sturdy structure, the third layer which is made from aluminum prevents light or oxygen from entering or exiting the package and lastly the interior polyethylene layer makes the package waterproof and odor-tight. And you thought that multilayer packs are great? Wait till you hear about the recently-invented-laminated-retort pouch which is making its way up the food production industry. That pouch has the same function as the brick package but with more flexibility and in smaller size. So, this means that it is very portable! The multilayer pouch is very convenient as it provides prepackaged food for soldiers, astronauts, hikers and other consumers.</p>
+		            </ol>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">How Amazing!!!</h3>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri"><strong><em>Don't you see how amazing this advanced food packaging is?</strong></em> It allows foods to be connected worldwide because now it is easier to transport fresh foods around the globe at any given time. This advancement is the one that makes it possible for a person like me living in Malaysia eating foods from the United Stated without actually travelling to the United States. <strong><em>WOW!</em></strong> How much money have I saved from that? So much that it can last me for one month of food stock. Not only that, this technology has given the privilege for everyone to enjoy seasonal fruits like strawberries, bananas and durians regardless of the season! People living in places with limited freshwater or saltwater now can enjoy variety of seafood from other places that have abundance of fresh seafood regardless of the distance. What else can we wish for in our food industry if not those? As superb as it may sounds, like any other technologies that mankind have created since our ancestors, there are still many areas in food packaging technology that we can still improve to make, if not perfect, at least near to perfection. During my free time, when my mind is wondering to the future, I always imagine myself to be the one that actually improves the technology to perfection. Although it may just be a daydream, but no harm trying right? <strong><em>Now I have found even stronger reasons for me to be a chemical engineer!</em></strong></p>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">My Wish for 'Foods' Future</h3>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">Although my love for food is unquestionable, I am quite picky as I am a health-conscious person; thus, I want to know in detail about what I consume every day and what effect they have on me. Currently, as the public-health-conscious level is rising, there are lots of conspiracies around the media saying that packaged foods is unhealthy and are even said to be carcinogenic. I think it is <strong><em>my job as a future-chemical engineer</em></strong> to convert raw food supplies into safe consumer products with the highest quality possible at affordable market price. Therefore I want to do more research on this and verify the rumors by professional scientific approach and do whatever that can be done and needs to be done in order to improve not only the quantity of food supplies but also the quality of the food supplies around the world and still make it affordable for public. The best way for me to achieve this goal is by being a chemical engineer that has concentration in food science. Through that concentration, not only will I learn about food chemistry and microbiology, I will also learn about food engineering. That means I will know more about the advanced materials and techniques used for food processing and packaging like the chemical and heat sterilization and food production monitoring and control, which are essential for food industries that use machine-controlled facilities to produce high-throughput production of safe food products. Now maybe, just maybe it can be <strong><em>more than just a daydream.</em></strong> </p>
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">So, Why not a CHEMICAL ENGINEER?</h3>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri"> After years and years of searching around, being lost and living a life without specific purpose, now finally I have found what I am looking for. Chemical engineering with food science concentration is the major I have chosen to help me leave a <strong><em>footmark</em></strong> in making the world a better place to live! It is my dream and only dream that is fully born from my burning passion to see people consume what is not only tasty but safe for their health. This is very important not only to me but for the society because the health level of public consumers is declining immensely that it is very worrisome. Since chemical engineers are capable of developing technologies that can counter attack this problem, why not I <strong><em>take up the challenge and become one?</em></strong></p>
 	</main>
 	<footer>
-		<p>&copy; 2013 [Name goes here]</p>
+		<p style="color:#2E2E2E; text-align:center; font-size:20px; font-family:lucida">Copyright &copy; 2013 Fatin Huraiyah Pathi | Michigan State University</p>
 	</footer>

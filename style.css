@@ -44,6 +44,20 @@ a:hover {
 	width:110px;
 	text-align:center;
 	font-size:13px;
-	border: 2px solid white;
+	border: 2.5px solid white;
+	border-radius:10px;
+}
+
+.tabbertab {
+	display:inline-block;
+	float: top;
+	padding:5px;
+	margin-bottom:20px;
+	margin-right:10px;
+	height:30px;
+	width:110px;
+	text-align:center;
+	font-size:13px;
+	border: 2px dashed white;
 	border-radius:10px;
 }
