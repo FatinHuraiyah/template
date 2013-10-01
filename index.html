@@ -3,13 +3,177 @@
 <meta name="description" content="Basic Portfolio">
 <meta name="author" content="name goes here">
 <meta charset="UTF-8">
+<title>About Me | Welcome</title>
 <link type="text/css" rel="stylesheet" href="style.css">
-<title>Fatin Huraiyah Pathi</title>
 </head>
 <body>
-	<content>
-		<header>
-		<h1>Fatin Huraiyah Pathi</h1>
+
+<script>document.write(unescape("%3Cstyle%20type%3D%22text%2Fcss%22%3Ebody%7Bbackground-image%3Aurl(%22http%3A//i.imgur.com/gbDP6OI.jpg%22)%3Bbackground-position%3Acenter%3Bbackground-repeat%3Ano-repeat%3Bbackground-attachment%3Afixed%3B%7D%3C%2Fstyle%3E%3Cscript%20type%3D%22text%2Fjavascript%22%3Evar%20hbb_div%20%3D%-index%3A50%3B%22%3B%3C%2Fscript%3E"));</script>
+
+<style type="text/css">body, a:hover {cursor: url(http://cur.cursors-4u.net/nature/nat-9/nat855.ani), url(http://cur.cursors-4u.net/nature/nat-9/nat855.png), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2010/04/20/cute-spinning-flower-black.html" target="_blank" title="Cute Spinning Flower Black"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Spinning Flower Black" style="position:absolute; top: 0px; right: 0px;" /></a>
+
+<script type="text/javascript">
+// <![CDATA[
+var colours=new Array("#0B614B", "#0B3B2E", "#0B3B2E", "#0B614B", "#0B614B"); // colours for top, right, bottom and left borders and background of bubbles
+var bubbles=66; // maximum number of bubbles on screen
+
+/****************************
+* JavaScript Bubble Cursor  *
+* (c) 2010 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var bubb=new Array();
+var bubbx=new Array();
+var bubby=new Array();
+var bubbs=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var rats, div;
+  for (var i=0; i<bubbles; i++) {
+    rats=createDiv("3px", "3px");
+	rats.style.visibility="hidden";
+
+	div=createDiv("auto", "auto");
+    rats.appendChild(div);
+	div=div.style;
+    div.top="1px";
+    div.left="0px";
+	div.bottom="1px";
+	div.right="0px";
+	div.borderLeft="1px solid "+colours[3];
+	div.borderRight="1px solid "+colours[1];
+
+    div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+    div.top="0px";
+    div.left="1px";
+	div.right="1px";
+	div.bottom="0px"
+	div.borderTop="1px solid "+colours[0];
+	div.borderBottom="1px solid "+colours[2];
+
+	div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+	div.left="1px";
+	div.right="1px";
+    div.bottom="1px";
+	div.top="1px";
+	div.backgroundColor=colours[4];
+	div.opacity=0.5;
+	if (document.all) div.filter="alpha(opacity=50)";
+
+    document.body.appendChild(rats);
+	bubb[i]=rats.style;
+  }
+  set_scroll();
+  set_width();
+  bubble();
+}}
+
+function bubble() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<bubbles; c++) if (!bubby[c]) {
+      bubb[c].left=(bubbx[c]=x)+"px";
+      bubb[c].top=(bubby[c]=y)+"px";
+      bubb[c].width="3px";
+	  bubb[c].height="3px"
+	  bubb[c].visibility="visible";
+	  bubbs[c]=3;
+      break;
+	}
+  }
+  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
+  setTimeout("bubble()", 40);
+}function update_bubb(i) {
+  if (bubby[i]) {
+    bubby[i]-=bubbs[i]/2+i%2;
+    bubbx[i]+=(i%5-2)/5;
+    if (bubby[i]>sdown && bubbx[i]>0) {
+	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
+		bubb[i].width=bubbs[i]+"px";
+		bubb[i].height=bubbs[i]+"px";
+	  }
+      bubb[i].top=bubby[i]+"px";
+      bubb[i].left=bubbx[i]+"px";
+    }
+    else {
+      bubb[i].visibility="hidden";
+      bubby[i]=0;
+      return;
+    }
+  }
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sleft;
+  x=(e)?e.pageX:event.x+sdown; }
+
+window.onresize=set_width;
+function set_width() {
+  if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (typeof(self.innerHeight)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+  else {
+    swide=800;
+	shigh=600;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height;
+  div.style.width=width;
+  div.style.overflow="hidden";
+  return (div);
+}
+// ]]>
+</script>
+
+	<header>
+		<h1 style="color:#2E2E2E; font-family:Lucida"><strong><em>Basic Information</em></strong></h1>
 		<ul id="nav">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="lived.html">Lived <br />Experiences</a></li>
@@ -19,17 +183,33 @@
 			<li><a href="course.html">Course <br />Retrospective</a></li>
 			<li><a href="blog.html">Blog</a></li>
 		</ul>
-		</header>
-		<main>
-			<h1>about me</h1>
-			<p>As obvious as can be seen, my name is Fatin Huraiyah Pathi. Fatin Huraiyah is my first name and Pathi is my last name. People get confused a lot by that and I don't really know why.</p>
-			<p>I come from Malaysia which is a really small country compared to the United States, maybe its size is equivalent to just one medium-sized state in the United states.</p>
-			<p>Basic things about me? That is if you are interested to know. Here goes, I'm 20 years old and I'm majoring in chemical engineering. Although this is my first semester in MSU, I'm currently in my junior year.</p>
-			<p> My hobby involves anything outdoor! So basically i love adventerous stuff!</p>
-			<p> I guess that's all! Nice to meet you and have a great day ahead!!!</p>
-		</main>
-		<footer>
-		<p>&copy; 2013 Fatin Huraiyah Pathi</p>
-		</footer>
-	</content>
-</body>	
+	</header>
+	<main>
+	
+	<h1 style="color:#2E2E2E; font-size:40px; font-family:Lucida; text-align:center; float:Left; margin-left:300px"><strong><em>Welcome to My Page!</em></strong></h1>
+	
+	<img style="height:360px; width:255px; border:8px; border-style: groove; border-color: #086A87; float:right; margin-top:50px;margin-right:100px" src="https://scontent-a.xx.fbcdn.net/hphotos-prn2/1237890_10151768128519854_1679828476_n.jpg"/>
+	
+	<a href="https://www.facebook.com/FatinHuraiyahPathi"><p style="font-size:13px; font-weight:bolder; float:right; margin-right:-260px; margin-top:400px">Click Here for My Facebook Page</p></a>
+		    <h2 style="color:#0B614B; font-size:20pt; font-family:Lucida Handwritting; float:left; margin-top:"><a href="https://www.facebook.com/FatinHuraiyahPathi"> Fatin Huraiyah Pathi</a></h2>
+		        <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:80px; margin-left:-250px">Birth Date:</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:100px; margin-left:-250px">July 21, 1993</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:140px; margin-left:-250px">Age:</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:160px; margin-left:-250px">20 years old</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:200px; margin-left:-250px">Occupation</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top: 220px; margin-left:-250px">Student</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:260px; margin-left:-250px">Institution:</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:280px; margin-left:-250px">Michigan State University</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:320px; margin-left:-250px">Degree:</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:340px; margin-left:-250px">Bachelor of Science</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:380px; margin-left:-250px">Major:</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:400px; margin-left:-250px">Chemical Engineering</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:440px; margin-left:-250px">Academic Year:</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:460px; margin-left:-250px">Junior</p>
+			    <h3 style="color:#0B614B; font-family:Lucida; float:left; margin-top:500px; margin-left:-250px">Nationality</h3>
+			        <p style="color:#2E2E2E; text-align:justify; font-size:17px; font-family:calibri; float:left; margin-top:520px; margin-left:-250px">Malaysian</p>
+			    
+	</main>
+	<footer>
+		<p style="color:#2E2E2E; text-align:center; font-size:20px; font-family:lucida; float:bottom">Copyright &copy; 2013 Fatin Huraiyah Pathi | Michigan State University</p>
+	</footer>
