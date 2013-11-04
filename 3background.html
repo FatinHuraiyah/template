@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<head>
+<meta name="description" content="Basic Portfolio">
+<meta name="author" content="name goes here">
+<meta charset="UTF-8">
+<title>Formal Research Project</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>document.write(unescape("%3Cstyle%20type%3D%22text%2Fcss%22%3Ebody%7Bbackground-image%3Aurl(%22http%3A//i.imgur.com/BfrvrhU.jpg%22)%3Bbackground-position%3Acenter%3Bbackground-repeat%3Ano-repeat%3Bbackground-attachment%3Afixed%3B%7D%3C%2Fstyle%3E%3Cscript%20type%3D%22text%2Fjavascript%22%3Evar%20hbb_div%20%3D%20document.createElement(%22div%22)%3Bhbb_div.innerHTML%20%3D%20%22%3Ca%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22http%3A%2F%2Fhotbliggityblog.com%2Fbackgrounds%2Frefer%2F528%5C%22%3E%3Cimg%20style%3D%5C%22border%3Anone%3B%5C%22%20src%3D%5C%22http%3A%2F%3Bz-index%3A50%3B%22%3B%3C%2Fscript%3E"));</script>
+
+<style type="text/css">body, a:hover {cursor: url(http://cur.cursors-4u.net/nature/nat-9/nat854.ani), url(http://cur.cursors-4u.net/nature/nat-9/nat854.png), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2010/04/20/cute-spinning-flower-tan.html" target="_blank" title="Cute Spinning Flower Tan"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Spinning Flower Tan" style="position:absolute; top: 0px; right: 0px;" /></a>
+
+<script type="text/javascript">
+// <![CDATA[
+var colours=new Array("#FF8000", "#DF3A01", "#DF3A01", "#FF8000", "#FF8000"); // colours for top, right, bottom and left borders and background of bubbles
+var bubbles=66; // maximum number of bubbles on screen
+
+/****************************
+* JavaScript Bubble Cursor  *
+* (c) 2010 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var bubb=new Array();
+var bubbx=new Array();
+var bubby=new Array();
+var bubbs=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var rats, div;
+  for (var i=0; i<bubbles; i++) {
+    rats=createDiv("3px", "3px");
+	rats.style.visibility="hidden";
+
+	div=createDiv("auto", "auto");
+    rats.appendChild(div);
+	div=div.style;
+    div.top="1px";
+    div.left="0px";
+	div.bottom="1px";
+	div.right="0px";
+	div.borderLeft="1px solid "+colours[3];
+	div.borderRight="1px solid "+colours[1];
+
+    div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+    div.top="0px";
+    div.left="1px";
+	div.right="1px";
+	div.bottom="0px"
+	div.borderTop="1px solid "+colours[0];
+	div.borderBottom="1px solid "+colours[2];
+
+	div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+	div.left="1px";
+	div.right="1px";
+    div.bottom="1px";
+	div.top="1px";
+	div.backgroundColor=colours[4];
+	div.opacity=0.5;
+	if (document.all) div.filter="alpha(opacity=50)";
+
+    document.body.appendChild(rats);
+	bubb[i]=rats.style;
+  }
+  set_scroll();
+  set_width();
+  bubble();
+}}
+
+function bubble() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<bubbles; c++) if (!bubby[c]) {
+      bubb[c].left=(bubbx[c]=x)+"px";
+      bubb[c].top=(bubby[c]=y)+"px";
+      bubb[c].width="3px";
+	  bubb[c].height="3px"
+	  bubb[c].visibility="visible";
+	  bubbs[c]=3;
+      break;
+	}
+  }
+  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
+  setTimeout("bubble()", 40);
+}function update_bubb(i) {
+  if (bubby[i]) {
+    bubby[i]-=bubbs[i]/2+i%2;
+    bubbx[i]+=(i%5-2)/5;
+    if (bubby[i]>sdown && bubbx[i]>0) {
+	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
+		bubb[i].width=bubbs[i]+"px";
+		bubb[i].height=bubbs[i]+"px";
+	  }
+      bubb[i].top=bubby[i]+"px";
+      bubb[i].left=bubbx[i]+"px";
+    }
+    else {
+      bubb[i].visibility="hidden";
+      bubby[i]=0;
+      return;
+    }
+  }
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sleft;
+  x=(e)?e.pageX:event.x+sdown; }
+
+window.onresize=set_width;
+function set_width() {
+  if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (typeof(self.innerHeight)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+  else {
+    swide=800;
+	shigh=600;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height;
+  div.style.width=width;
+  div.style.overflow="hidden";
+  return (div);
+}
+// ]]>
+</script>
+
+	<header>
+		<h1 style="color:#2E2E2E; font-family:Lucida"><strong><em>Formal Research Project</em></strong></h1>
+		<ul id="nav">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="lived.html">Lived <br />Experiences</a></li>
+			<li><a href="cultural.html">Cultural <br />Analysis</a></li>
+			<li><a href="formal.html">Formal <br />Research</a></li>
+			<li><a href="remix.html">Remix</a></li>
+			<li><a href="course.html">Course <br />Retrospective</a></li>
+			<li><a href="blog.html">Blog</a></li>
+		</ul>
+	</header>
+	<main>
+	
+	<div style="text-align:center"><img src="http://programs.northlandcollege.edu/biology/AP1Forms/AP1labs/lab1/images/female_scientist_climb_microscope_hg_clr.gif"/></div>
+	
+		<h1 style="color:#2E2E2E; font-size:40px; font-family:Lucida; text-align:center"><strong><em>Chemical Engineering as an Academic Discipline</em></strong></h1>
+		
+		<div align="center" class='tabber'>
+            <b:section class='tabbertab' id='tab1' maxwidgets='1'><a href="3summary.html">Executive <br />Summary</a></b:section>
+            
+            <b:section class='tabbertab' id='tab2' maxwidgets='1'><a href="3introduction.html"><br />Introduction</a></b:section>
+            
+            <b:section class='tabbertab' id='tab3' maxwidgets='1'><a href="3background.html">Research and <br />Analysis</a></b:section>
+            
+            <b:section class='tabbertab' id='tab4' maxwidgets='1'><a href="3conclusion.html"><br />Conclusion</a></b:section>
+
+<b:section class='tabbertab' id='tab5' maxwidgets='1'><a href="3appendices.html"><br />Appendices</a></b:section>
+
+            <b:section class='tabbertab' id='tab6' maxwidgets='1'><a href="3works.html">Works <br />Cited</a></b:section>   
+
+		    <h3 style="color:#0B614B; font-size:25px; font-family:Lucida">Background Research and Analysis</h3>
+			    <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri"></p>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri"></p>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri"></p>
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri"></p>
+		    
+	</main>
+	<footer>
+		<p style="color:#2E2E2E; text-align:center; font-size:20px; font-family:lucida">Copyright &copy; 2013 Fatin Huraiyah Pathi | Michigan State University</p>
+	</footer>
