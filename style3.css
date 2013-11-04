@@ -1,0 +1,124 @@
+body {
+	color:#fff;
+	background:#333;
+	font-family:Courier;
+	width:960px;
+	margin:auto;
+}
+
+
+header, main, footer {
+	clear:both;
+	margin-left:0;
+	
+}
+
+header, main h1 {
+	color:#2E2E2E;
+	font-family: lucida;
+	font-size: 21px;
+}
+
+a, a:visited {
+	color:#086A87;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #0B0B61;
+	text-decoration: none;
+}
+
+#nav {
+	list-style: none;
+	width:960px;
+	margin-left:-40px;
+	
+}
+
+#nav li {
+	display:block;
+	float: left;
+	padding:5px;
+	margin-bottom:20px;
+	margin-right:10px;
+	height:30px;
+	width:110px;
+	text-align:center;
+	font-size:13px;
+	border: 2.5px solid white;
+	border-radius:10px;
+}
+
+.tabbertab {
+	display:inline-block;
+	float: top;
+	padding:5px;
+	margin-bottom:20px;
+	margin-right:10px;
+	height:30px;
+	width:110px;
+	text-align:center;
+	font-size:13px;
+	border: 2px dashed white;
+	border-radius:10px;
+}
+
+
+
+The two main positional styles for the tabs is the 'tab-container' is 'floated left' with a width of 126 pixels. The 'main-container' has a left margin of 125 pixels. This created a 1 pixel overlap with the tabs on top. The border around the 'main-container' is interrupted by the tab elements. The selected tab is set to have no right border while the other tabs all have a right border.
+
+#content
+{
+   background-color: #f2f2f2;
+   padding: 20px 10px;
+   overflow: auto;
+}
+#tab-container
+{
+   float: left;
+   margin: 50px 0 0 0;
+   width: 126px;
+}
+#tab-container ul
+{
+   list-style: none;
+   text-align: center;
+}
+#tab-container ul li
+{
+   border-top: 1px solid #666;
+   border-right: 1px solid #666;
+   border-bottom: 1px solid #666;
+   border-left: 8px solid #666;
+   background-color: #ddd;
+   margin: 8px 0;
+}
+#tab-container ul li a,
+#tab-container ul li a:visited
+{
+   text-decoration: none;
+   color: #666;
+   display: block;
+   padding: 15px 5px;
+}
+#tab-container ul li:hover
+{
+   border-left: 8px solid #333;
+}
+#tab-container ul li a:hover
+{
+   color: #000;
+}
+#tab-container ul li.selected
+{
+   border-right: none;
+   background-color: #fff;
+   border-left: 8px solid #006699;
+}
+#main-container
+{
+   min-height: 400px;
+   margin: 0 0 0 125px;
+   padding: 20px;
+}
