@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<head>
+<meta name="description" content="Basic Portfolio">
+<meta name="author" content="name goes here">
+<meta charset="UTF-8">
+<title>Multimedia Remix Project</title>
+<link type="text/css" rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+<script>document.write(unescape("%3Cstyle%20type%3D%22text%2Fcss%22%3Ebody%7Bbackground-image%3Aurl(%22http%3A//i.imgur.com/BfrvrhU.jpg%22)%3Bbackground-position%3Acenter%3Bbackground-repeat%3Ano-repeat%3Bbackground-attachment%3Afixed%3B%7D%3C%2Fstyle%3E%3Cscript%20type%3D%22text%2Fjavascript%22%3Evar%20hbb_div%20%3D%20document.createElement(%22div%22)%3Bhbb_div.innerHTML%20%3D%20%22%3Ca%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22http%3A%2F%2Fhotbliggityblog.com%2Fbackgrounds%2Frefer%2F528%5C%22%3E%3Cimg%20style%3D%5C%22border%3Anone%3B%5C%22%20src%3D%5C%22http%3A%2F%3Bz-index%3A50%3B%22%3B%3C%2Fscript%3E"));</script>
+
+<style type="text/css">body, a:hover {cursor: url(http://cur.cursors-4u.net/nature/nat-9/nat854.ani), url(http://cur.cursors-4u.net/nature/nat-9/nat854.png), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2010/04/20/cute-spinning-flower-tan.html" target="_blank" title="Cute Spinning Flower Tan"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Spinning Flower Tan" style="position:absolute; top: 0px; right: 0px;" /></a>
+
+<script type="text/javascript">
+// <![CDATA[
+var colours=new Array("#FF8000", "#DF3A01", "#DF3A01", "#FF8000", "#FF8000"); // colours for top, right, bottom and left borders and background of bubbles
+var bubbles=66; // maximum number of bubbles on screen
+
+/****************************
+* JavaScript Bubble Cursor  *
+* (c) 2010 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var bubb=new Array();
+var bubbx=new Array();
+var bubby=new Array();
+var bubbs=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var rats, div;
+  for (var i=0; i<bubbles; i++) {
+    rats=createDiv("3px", "3px");
+	rats.style.visibility="hidden";
+
+	div=createDiv("auto", "auto");
+    rats.appendChild(div);
+	div=div.style;
+    div.top="1px";
+    div.left="0px";
+	div.bottom="1px";
+	div.right="0px";
+	div.borderLeft="1px solid "+colours[3];
+	div.borderRight="1px solid "+colours[1];
+
+    div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+    div.top="0px";
+    div.left="1px";
+	div.right="1px";
+	div.bottom="0px"
+	div.borderTop="1px solid "+colours[0];
+	div.borderBottom="1px solid "+colours[2];
+
+	div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+	div.left="1px";
+	div.right="1px";
+    div.bottom="1px";
+	div.top="1px";
+	div.backgroundColor=colours[4];
+	div.opacity=0.5;
+	if (document.all) div.filter="alpha(opacity=50)";
+
+    document.body.appendChild(rats);
+	bubb[i]=rats.style;
+  }
+  set_scroll();
+  set_width();
+  bubble();
+}}
+
+function bubble() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<bubbles; c++) if (!bubby[c]) {
+      bubb[c].left=(bubbx[c]=x)+"px";
+      bubb[c].top=(bubby[c]=y)+"px";
+      bubb[c].width="3px";
+	  bubb[c].height="3px"
+	  bubb[c].visibility="visible";
+	  bubbs[c]=3;
+      break;
+	}
+  }
+  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
+  setTimeout("bubble()", 40);
+}function update_bubb(i) {
+  if (bubby[i]) {
+    bubby[i]-=bubbs[i]/2+i%2;
+    bubbx[i]+=(i%5-2)/5;
+    if (bubby[i]>sdown && bubbx[i]>0) {
+	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
+		bubb[i].width=bubbs[i]+"px";
+		bubb[i].height=bubbs[i]+"px";
+	  }
+      bubb[i].top=bubby[i]+"px";
+      bubb[i].left=bubbx[i]+"px";
+    }
+    else {
+      bubb[i].visibility="hidden";
+      bubby[i]=0;
+      return;
+    }
+  }
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sleft;
+  x=(e)?e.pageX:event.x+sdown; }
+
+window.onresize=set_width;
+function set_width() {
+  if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (typeof(self.innerHeight)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+  else {
+    swide=800;
+	shigh=600;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height;
+  div.style.width=width;
+  div.style.overflow="hidden";
+  return (div);
+}
+// ]]>
+</script>
+
+	<header>
+		<h1 style="color:#2E2E2E; font-family:Lucida"><strong><em>Multimedia Remix Project</em></strong></h1>
+		<ul id="nav">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="lived.html">Lived <br />Experiences</a></li>
+			<li><a href="cultural.html">Cultural <br />Analysis</a></li>
+			<li><a href="formal.html">Formal <br />Research</a></li>
+			<li><a href="remix.html">Remix</a></li>
+			<li><a href="course.html">Course <br />Retrospective</a></li>
+			<li><a href="blog.html">Blog</a></li>
+		</ul>
+	</header>
+	<main>
+	
+	
+	<div style="text-align:center"><img src="https://lh6.ggpht.com/rxczDnVsD7eNqJ8xlA2RKRUZvqT02Xvu2IdmgYGSEHbP_DYyXAjAalaEy_fqw2V6odo=w300"/></div>
+	
+	<div style="text-align:center"><img src="http://www.bubblews.com/assets/images/news/1737465413_1377837233.png"/></div>
+	
+		<h1 style="color:#2E2E2E; font-size:40px; font-family:Lucida; text-align:center"><strong><em>Disconnect to Connect</em></strong></h1>
+
+		    <div align="center"><h3 style="color:#0B614B; font-size:25px; font-family:Lucida">Memo</h3>
+		    
+		       <div id="content">
+   <div id="tab-container">
+      <ul>
+      
+         <li><a href="video.html">Video</a></li>
+         <li><a href="memo.html">Memo</a></li>
+         <li><a href="workscited.html">Works Cited</a></li>
+         
+      </ul>
+   </div>
+  
+   <div id="main-container">
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">TO: Dr. Christie L. Daniels, Instructor of WRA 110</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">FROM: Fatin Huraiyah Pathi, Student of WRA 110</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">DATE: December 1, 2013</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">SUBJECT: Multimedia Remix Project – 'Disconnect to Connect'</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">This Multimedia Remix Project is done in a group and there are three of us working together for this project. The members of the group are Joshua, Lihan and me. After some discussion, it is decided that Lihan's Cultural Analysis Proposal topic will be the issue used for this project. The issue discussed demonstrates the downsides of excessive usage of cellphones on communication, specifically on in-person communication. The name of this project is 'Disconnect to Connect'.</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri"><strong>Composing in Context</strong></p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">'Disconnect to Connect' brings the focus of the project to the current reality on how people are excessively using their cell phones and neglecting the importance of an in-person communication. This project has proven that this issue has spread inadvertently into the society and become an unwanted part of the society's culture. The purpose of 'Disconnect to Connect' is to give a wakeup call to its audience regarding issue. There are few problems encountered throughout the documentary. Finding statistical data that will provide solid evidence is quite hard because the data found must come from reliable sources.  Besides that, finding willing interviewees is also very tough because most of the people did not want to talk about their cell phone usage. These have caused delays in the progress of creating the documentary. </p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri"><strong>Process</strong></p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">After a thorough discussion, my group and I have decided to make 'Disconnect to Connect' as the topic of our project. We found out that many people are aware about this issue but nobody takes this issue seriously and make changes. So we decided that we need to initiate the effort and this is how we come to decide to make this issue as the topic of our project. The most challenging part of this project is to design the structure of the documentary. It is because each member of the group has his or her own unique idea; thus, putting everyone's idea together into a coherent sequence and making each member satisfy will be very hard and time consuming. Throughout the project, everything is done in an orderly manner. The systematic approach which includes proper planning and good time management have resulted in the successful completion of the project.</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri"><strong>Research</strong></p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">The most significant resource that is used in the documentary is the statistic data that shows pattern of phone usage in today's society. This is the most significant resource because this resource gives solid evidence on the issue that is discussed in the documentary and. The least significant resource that is used in the documentary is the short film that shows the common scene that we see among the teenagers nowadays. That is because this scene is just a simulation and will not give that much impact to the audience. The audience might feel that it is just acting therefore it is not realistic. Regardless of this, the short film is still included because its main purpose is to grab the audience's attention. </p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri"><strong>Collaboration</strong></p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">In order for this project to be successful, there must be good collaboration among the team members. Full utilization of technology like cell phones and laptops are crucial in order to complete this project. Calling, texting and emailing are the common interactions used by team members to contact each other before meeting up. There is a weekly meeting during the weekends for the group members to work on this project together. Each member will be given and individual task and these individual parts are pieced together during the weekly meeting. Working in groups in order to complete this project is very fruitful as it is a very efficient way of compiling data. Many task can be done in a shorter time as there are many people working together simultaneously to complete this project.</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri"><strong>Project Management</strong></p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">The project management of this project is quite good. That is because every work sequence is planned carefully and ahead of time. Group members are very cooperative in completing the tasks. All the tasks are already scheduled in the beginning of this project. Although, it is quite hard to work exactly according to the schedule as there might be some unexpected events that caused some changes to the schedule but the schedule gives the group members the idea on the sequence on tasks that should be done. Although everything went quite well throughout the project, it would be better if the interviewee used in the documentary is someone professional, maybe a psychologist or psychology students that have done a research on the issue. This will greatly improve the reliability on the data provided through the interview. </p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri"><strong>Documentary Design </strong></p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">The most effective aspect of the documentary is the structure of the documentary. The action sequence of the documentary starts with the short film, then the statistic data, followed by the interviews, and finally the conclusion.  The structure of the documentary is design in this way because the group members have agreed that a documentary must first capture the interest of the audience before the discussion on the issue can be done and that is why the documentary begins with the short film. Only after the audience's attention is captured then all the information and discussion can be shown. The conclusion will concludes everything will leave the audience with lingering question and realization that will change the perspective of the audience on cell phones.</p>
+       <p style="color:#2E2E2E; text-align:justify; font-size:20px; font-family:calibri">Through proper planning, good time management and solid teamwork, the completion of this project became possible. Besides that, thorough research and comprehensive analysis of the documentary design also contributes to the success of this project. 'Disconnect to Connect' will be the wakeup call for society and make them realize how important it is to handle this issue before it is too late. </p>
+       
+</div>
+	</main>
+	<footer>
+		<p style="color:#2E2E2E; text-align:center; font-size:20px; font-family:lucida">Copyright &copy; 2013 Fatin Huraiyah Pathi | Michigan State University</p>
+	</footer>
