@@ -3,12 +3,177 @@
 <meta name="description" content="Basic Portfolio">
 <meta name="author" content="name goes here">
 <meta charset="UTF-8">
-<title>lived experiences project | my portfolio</title>
+<title>Lived Experiences Project</title>
 <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<script>document.write(unescape("%3Cstyle%20type%3D%22text%2Fcss%22%3Ebody%7Bbackground-image%3Aurl(%22http%3A//i.imgur.com/BfrvrhU.jpg%22)%3Bbackground-position%3Acenter%3Bbackground-repeat%3Ano-repeat%3Bbackground-attachment%3Afixed%3B%7D%3C%2Fstyle%3E%3Cscript%20type%3D%22text%2Fjavascript%22%3Evar%20hbb_div%20%3D%20document.createElement(%22div%22)%3Bhbb_div.innerHTML%20%3D%20%22%3Ca%20target%3D%5C%22_blank%5C%22%20href%3D%5C%22http%3A%2F%2Fhotbliggityblog.com%2Fbackgrounds%2Frefer%2F528%5C%22%3E%3Cimg%20style%3D%5C%22border%3Anone%3B%5C%22%20src%3D%5C%22http%3A%2F%3Bz-index%3A50%3B%22%3B%3C%2Fscript%3E"));</script>
+
+<style type="text/css">body, a:hover {cursor: url(http://cur.cursors-4u.net/nature/nat-9/nat854.ani), url(http://cur.cursors-4u.net/nature/nat-9/nat854.png), progress !important;}</style><a href="http://www.cursors-4u.com/cursor/2010/04/20/cute-spinning-flower-tan.html" target="_blank" title="Cute Spinning Flower Tan"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Spinning Flower Tan" style="position:absolute; top: 0px; right: 0px;" /></a>
+
+<script type="text/javascript">
+// <![CDATA[
+var colours=new Array("#FF8000", "#DF3A01", "#DF3A01", "#FF8000", "#FF8000"); // colours for top, right, bottom and left borders and background of bubbles
+var bubbles=66; // maximum number of bubbles on screen
+
+/****************************
+* JavaScript Bubble Cursor  *
+* (c) 2010 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var bubb=new Array();
+var bubbx=new Array();
+var bubby=new Array();
+var bubbs=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var rats, div;
+  for (var i=0; i<bubbles; i++) {
+    rats=createDiv("3px", "3px");
+	rats.style.visibility="hidden";
+
+	div=createDiv("auto", "auto");
+    rats.appendChild(div);
+	div=div.style;
+    div.top="1px";
+    div.left="0px";
+	div.bottom="1px";
+	div.right="0px";
+	div.borderLeft="1px solid "+colours[3];
+	div.borderRight="1px solid "+colours[1];
+
+    div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+    div.top="0px";
+    div.left="1px";
+	div.right="1px";
+	div.bottom="0px"
+	div.borderTop="1px solid "+colours[0];
+	div.borderBottom="1px solid "+colours[2];
+
+	div=createDiv("auto", "auto");
+	rats.appendChild(div);
+	div=div.style;
+	div.left="1px";
+	div.right="1px";
+    div.bottom="1px";
+	div.top="1px";
+	div.backgroundColor=colours[4];
+	div.opacity=0.5;
+	if (document.all) div.filter="alpha(opacity=50)";
+
+    document.body.appendChild(rats);
+	bubb[i]=rats.style;
+  }
+  set_scroll();
+  set_width();
+  bubble();
+}}
+
+function bubble() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<bubbles; c++) if (!bubby[c]) {
+      bubb[c].left=(bubbx[c]=x)+"px";
+      bubb[c].top=(bubby[c]=y)+"px";
+      bubb[c].width="3px";
+	  bubb[c].height="3px"
+	  bubb[c].visibility="visible";
+	  bubbs[c]=3;
+      break;
+	}
+  }
+  for (c=0; c<bubbles; c++) if (bubby[c]) update_bubb(c);
+  setTimeout("bubble()", 40);
+}function update_bubb(i) {
+  if (bubby[i]) {
+    bubby[i]-=bubbs[i]/2+i%2;
+    bubbx[i]+=(i%5-2)/5;
+    if (bubby[i]>sdown && bubbx[i]>0) {
+	  if (Math.random()<bubbs[i]/shigh*2 && bubbs[i]++<8) {
+		bubb[i].width=bubbs[i]+"px";
+		bubb[i].height=bubbs[i]+"px";
+	  }
+      bubb[i].top=bubby[i]+"px";
+      bubb[i].left=bubbx[i]+"px";
+    }
+    else {
+      bubb[i].visibility="hidden";
+      bubby[i]=0;
+      return;
+    }
+  }
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sleft;
+  x=(e)?e.pageX:event.x+sdown; }
+
+window.onresize=set_width;
+function set_width() {
+  if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (typeof(self.innerHeight)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+  else {
+    swide=800;
+	shigh=600;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height;
+  div.style.width=width;
+  div.style.overflow="hidden";
+  return (div);
+}
+// ]]>
+</script>
+
 	<header>
-		<h1>my portfolio</h1>
+		<h1 style="color:#2E2E2E; font-family:Lucida"><strong><em>Course Retrospective Project</em></strong></h1>
 		<ul id="nav">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="lived.html">Lived <br />Experiences</a></li>
@@ -20,8 +185,23 @@
 		</ul>
 	</header>
 	<main>
+		<div style="text-align:center"><img src="http://gringoboricua.com/write/wp-content/uploads/2013/11/4830-either-write-something-worth-reading-or-do-something-worth-writing.png"/></div>
+		<h1 style="color:#2E2E2E; font-size:40px; font-family:Lucida; text-align:center"><strong><em>Course Retrospective Project Report</em></strong></h1>
 
+			    <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">WRA 110 - Writing: Science and Technology is a necessary part of general education requirement of Michigan State University. It is a first-year writing course that aims to help the students understand more about themselves and their majors. This course is highly recommendable to those who are planning to venture into scientific disciplines as it explores deeply into the world of technology. WRA 110 focuses mainly on three skills which are reading, writing and researching. This course is different from other writing courses because it involves the creation of the student personal website that will present the all the work and papers that the student did throughout the course. This course will teach many new skills and give challenging experiences to those who have not done many writing or any research paper before. Having experience and skills in creating website will be a great perk for students who are planning to take this course because all of the course assignments will have a web version of it. Although there are only four course assignments that are given throughout the whole course, each assignment will need a comprehensive and systematic planning and takes up a lot of time since there are many things that should be done for each assignment. There are also in-class activities which will be included in the blog section of the student's website. Since there are many things that have to be done throughout the course, WRA 110 will be overwhelming if the students are not properly prepared for it and that is why this paper is written.</p>
+
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The purpose of this paper is to provide guidelines and useful tips that will help new students who are planning to take a first-year writing course. After reading this paper, the readers will have big picture of a first-year writing course and hopefully are better prepared for their first-year writing experience. In order to be successful in the first-year writing course, we must first understand the purpose of a first-year writing course. The main purpose of first-year writing course is to equip the first year students with sufficient and crucial writing, reading and research skills that will help in the transition from a high school writing to college-level-writing skill that is needed for them to complete their other college courses. There are few general conceptions that must be understood before further details of first-year writing are discussed. A first-year writing class in not a lecture class because the students will not spend most of their time listening to instructor instead they actually spends most of their time doing research with guidance from the instructor. A first-year writing class is not about studying grammar or literature but a place where the students reflect on their plans for college and even for their lives. So, first-year writing course is a course that gives lots of space for self-development and self-improvement.  Now, that the general concepts are understood, more detailed information can be discussed. The example of first-year writing class that will be used throughout this paper is WRA 110 - Writing: Science and Technology, one of the first-year writing classes offered in Michigan State University.</p>
+		    
+		        <p style="color:#2E2E2E; text-align:justify; text-indent:5em; font-size:20px; font-family:calibri">There are 4 major course assignments that will be given throughout WRA 110 class. The four course assignments are Lived Experience Project, Cultural Analysis Project, Formal Research Project and Multimodal Remix Project. There will also be small amount of classwork and blog assignments that need to be completed throughout the course. Thorough analysis of each assignment that will be discussed in the remaining part of this paper will give the readers an idea on first-year writings that allows them to know what are expected of them throughout the course. The first assignment, which is Lived Experience Project, is a narrative essay that discusses about the effect of technology on the writer's chosen major. To complete this assignment, the writer first need to know what is a narrative essay and how narrative essay is supposed to be written. This is an easy topic but not many students can complete it successfully because they do not fully understand what narrative essay is. Besides that, the writer should have an in-depth understanding on his or her chosen major. This understanding in not only useful for this assignment but it will be crucial throughout the course as the assignments given revolve around the writer's chosen major. Having a passion towards a specific technology that is used in the chosen major will be an advantage for this assignment. This is because the writer can spend less time in figuring out what technology he or she wants to write on and spend the extra time on researching how the technology works and the contribution of the technology to his or her chosen major. Overall, this assignment has the least workload when compared to the rest of the assignments and the reason is because this assignment is the first assignment given to the student and the instructor will not want to scare the students. This assignment gets the students in the mood for writing. But the students should not be laid back and expects the rest of the assignments will be as easy as this one because the rest of the assignments will not be as simple as this one. </p> 
+		            
+		          <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The second assignment which is the Cultural Analysis Project, is the first formatted paper given in this format. The student can choose to write the paper in APA or MLA format; therefore, the students must have a pre-knowledge on the formats. It is also better for the students if they have prior knowledge on the proposal format and how executive summary is written. Executive summary and proposal are also needed for the other assignments, so it is really an advantage if the students can master if beforehand. This assignment requires the student to do a detailed analysis on a popular cultural artifact and how it relates to a social issue. First and most importantly, the student must choose the right social issue and the right artifact. Right social issue means that a social issue that appears to be very significant to the student and maybe have a first-hand experience on. This will greatly affects this assignment because the writer needs to convince the readers on how bad the social issue is and how this it can be overcame. The social issue will be demonstrated through the artifact and that is why the right artifact must be chosen. The artifact must clearly show the social issue that the writer wants to discuss on. The writer must be very analytical and understand both the artifact and the social issue in and out. Only if the writer fully understands his or her material can he or she convince the reader to support on his or her proposition. Throughout the research process, the writer is advised to keep a record on all the reference that is used. This is because all the references used must be included in the paper. It will be easier to keep and ongoing record on what references, especially the websites, which are used than trying to recall the name of the references used at the end of the assignment because there will be too many references used to be remembered. </p>
+		            
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The third assignment is the Formal Research Project. This is the toughest assignment among the four assignments given. This assignment involves more thorough research, more workload and takes lots of time when compared to other assignments. This assignment allows the students to do an in-depth research about their interested discipline or intended discipline. Throughout this assignment the students will acquire lots of information regarding their discipline and how the writing and research process is different for different discipline. Reading Emig and Brummett articles before starting this assignment will be very helpful in further understanding what this assignment is about. The library activity that is given will also be very helpful for this assignment. The library activity helps the student in choosing suitable articles both popular and scholarly articles that can be used for this assignment. The students must always keep in mind what does the resource contribute to the understanding the student have regarding the chosen discipline when choosing resources. This will avoid redundancy as the students can prevent themselves from choosing resources that discuss about the same thing.  Apart from using article as resources, this assignment also involve interviews with professional and these interviews will also be part of the resources used. It is better to do the interviews after all other resources have been collected. This is because, now the student can identify which piece of information that does not has any resources discussing on it. Then, all the missing information can be obtained through the interviews. It is very advisable for students to prepare a list of questions asking for what they need before the interview to avoid any unusable information obtained from the interviews. After all the resources have been collected, the student should now do a self-study on how formal research report is written. The formal research report format will determine how the information gathered will be organized and presented in the paper. Finally, with all these information gathered, the student can now write the report in with any hassle.</p>
+		    
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">The last assignment for WRA 110 is the Multimedia Remix Project. This assignment will be very different from other assignment because it does not concentrate so much on writing but more on video-editing skills. This is the first group assignment in this course. Student can choose his or her own group member; thus, it is very wise to choose the one that you’re most comfortable with and the reliable ones. The only writing processes in this assignment are writing proposal before creating the video and memo after creating the video. Students should have at least a bit of an idea on how the structure for their video will be before writing the proposal. The purpose of the proposal is to guide the students on what they should be considering before creating their video.  The memo helps the student to review the effectiveness of the collaboration between the group members in producing the video. The video that the students will be working on will be a documentary video that will discuss about an issue from the previous assignments. So, it is advisable for the students to take note on this when choosing the topics for the previous assignments. It is highly recommended that the students do some self-study on video editing skills beforehand. This will give them a head start for this assignment.  </p>
+
+		        <p style="color:#2E2E2E; text-indent:5em; text-align:justify; font-size:20px; font-family:calibri">In conclusion, to be successful in the first-year writing course, students must first understand what the purpose of first-year writing course is and what is expected from the students in that course.  There will be lots of readings, writings and researching throughout the first-year writing courses. Good time management skill is very important in the first-year writing courses because lots of readings, writings and researching are required to be done for each assignment and they must be done in a very organized manner. Burning the candle at both ends will definitely not be possible for this course due to the amount workload that needs to be completed. Everything should be done through an ongoing effort. Early readings, especially for the reading assignment materials, are highly encouraged as it is very helpful for the ongoing or upcoming assignment throughout the course. Since some of the first-year writing courses involve building of website, it is advisable for the students to do a self-study on computer programming language like html and css. The instructor will provide a website where the students can do the self-study. It is really helpful to master the computer language as fast as possible in order for the student to fully utilize the function when creating the website version of the projects. Peer-reviewing is one of very useful tools to check on an ongoing project. Peer-reviews done for every draft for each assignment will help the students to identify their mistakes or misconception they have on the assignment. The instructor will be using few websites (Eli Review, D2L and Codecademy) as learning tools throughout the course. It will be very helpful to be familiar with all the websites beforehand to avoid any problem throughout the course. Although, the first-year writing course has tons of workload, but the experience and skills it offers to the students are very valuable and will help the students in surviving other courses throughout their college lives, especially when they are writing their own research paper in the future. </p>
 	</main>
 	<footer>
-		<p>&copy; 2013 [Fatin Huraiyah Pathi]</p>
+		<p style="color:#2E2E2E; text-align:center; font-size:20px; font-family:lucida">Copyright &copy; 2013 Fatin Huraiyah Pathi | Michigan State University</p>
 	</footer>
